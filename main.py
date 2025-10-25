@@ -17,7 +17,7 @@ import re
 plt.rcParams['font.family'] = 'IPAexGothic'
 
 # 分類カテゴリ
-categories = ['食費', '電気代', '交通費', '情報通信費', '日用雑貨', '遊戯', '学業', 'ガス代', '水道代','雑貨']
+categories = ['食費', '電気代', '交通費', '情報通信費', '日用雑貨', '遊戯', '学業', 'ガス代', '水道代','雑貨','立替金']
 
 # 想定カラム名候補
 expected_cols = {
@@ -63,7 +63,7 @@ def plot_pie_chart(df, pay_month):
     labels = [f"{cat}: {int(val):,}円" for cat, val in summary.items()]
     plt.figure(figsize=(6, 6))
     plt.pie(summary, labels=labels, autopct='%1.1f%%', startangle=140)
-    plt.title(f'出費のカテゴリ別割合（{pay_month}）')
+    plt.title(f'出費のカテゴリ別割合（{pay_month}）合計： {int(summary.sum()):,} 円')
     plt.tight_layout()
     plt.show()
 
