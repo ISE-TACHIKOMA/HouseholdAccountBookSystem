@@ -9,12 +9,12 @@ import PySimpleGUI as sg
 import pandas as pd
 import matplotlib.pyplot as plt
 import difflib
-import japanize_matplotlib
+# import japanize_matplotlib
 import os
 import re
 
 # 日本語フォント対応（matplotlib）
-plt.rcParams['font.family'] = 'IPAexGothic'
+plt.rcParams["font.family"] = "Meiryo"
 
 # 分類カテゴリ
 categories = ['食費', '電気代', '交通費', '情報通信費', '日用雑貨', '遊戯', '学業', 'ガス代', '水道代','雑貨','立替金']
@@ -92,7 +92,10 @@ def update_summary_display(df, window):
     window['-TOTAL-'].update(f"総合計: {int(total):,} 円")
 
 # 一時保存ファイル名
-temp_file = "temp_output.csv"
+temp_file = "temp/temp_output.csv"
+# 一時保存ディレクトリ作成
+os.makedirs(os.path.dirname(temp_file), exist_ok=True)
+
 
 # GUIレイアウト
 sg.theme('LightBlue')
